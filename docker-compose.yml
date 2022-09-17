@@ -2,6 +2,17 @@ version: "3.7"
 
 services:
 
+  app:
+    container_name: app
+    image: app
+    restart: always
+    build:
+      context: .
+      dockerfile: app.Dockerfile
+      target: base
+    ports:
+      - "${PORT}:${PORT}"
+
   db:
     container_name: db
     image: postgres:alpine
